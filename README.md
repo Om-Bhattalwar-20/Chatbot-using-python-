@@ -14,19 +14,6 @@ cd Chatbot
 python setup.py install
 Demo
 
->>> from chatbot import demo
->>> demo()
-Hi, how are you?
-> i'm fine
-Nice to know that you are fine  
-> quit
-Thank you for talking with me.
->>> 
-Sample Code (with wikipedia search API integration)
-
-from chatbot import Chat, register_call
-import wikipedia
-
 
 @register_call("whoIs")
 def who_is(session, query):
@@ -131,46 +118,7 @@ REST API integration
 
 In API.json file
 
-{
-   "APIName":{
-       "auth" : {
-           "url":"https://your_rest_api_url/login.json",
-           "method":"POST",
-           "data":{
-               "user":"Your_Username",
-               "password":"Your_Password"
-           }
-       },
-       "MethodName" : {
-           "url":"https://your_rest_api_url/GET_method_Example.json",
-           "method":"GET",
-           "params":{
-               "key1":"value1",
-               "key2":"value2",
-               ...
-           },
-           "value_getter":[order in which data has to be picked from json response]
-       },
-       "MethodName1" : {
-           "url":"https://your_rest_api_url/GET_method_Example.json",
-           "method":"POST",
-           "data":{
-               "key1":"value1",
-               "key2":"value2",
-               ...
-           },
-           "value_getter":[order in which data has to be picked from json response]
-       },
-       "MethodName2" : {
-           ...
-       },
-       ...
-   },
-   "APIName2":{
-       ...
-   },
-   ...
-}
+
 If authentication is required only then auth method is needed.The data and params defined in pi.json file acts as defult values and all key value pair defined in template file overrides the default value.value_getter consistes of list of keys in order using which info from json will be collected.
 
 In Template file
@@ -178,41 +126,4 @@ In Template file
 [ APIName:MethodName,Key1:value1 (,Key*:value*) ]
 you can have any number of key value pair and all key value pair will override data or params depending on method, if method is POST then it overrides data and if method is GET then it overrides params.
 
-Topic based group
 
-{% group topicName %}
-  {% block %}
-      {% client %}client says {% endclient %}
-      {% response %}response text{% endresponse %}
-  {% endblock %}
-  ...
-{% endgroup %}
-Learn
-
-{% learn %}
-  {% group topicName %}
-    {% block %}
-        {% client %}client says {% endclient %}
-        {% response %}response text{% endresponse %}
-    {% endblock %}
-    ...
-  {% endgroup %}
-  ...
-{% endlearn %}
-To upper case
-
-{% up string %}
-To lower case
-
-{% low string %}
-Capitalize
-
-{% cap string %}
-Previous
-
-{% block %}
-    {% client %}client's statement pattern{% endclient %}
-    {% prev %}previous bot's statement pattern{% endprev %}
-    {% response %}response string{% endresponse %}
-{% endblock %}
-Chatbot AI flow Diagram
