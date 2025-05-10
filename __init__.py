@@ -6,6 +6,7 @@ from threading import Thread, Event
 from time import sleep
 
 
+
 class ChatGUI:
     def __init__(self, callback, first_message="welcome to ChatBotAI", terminate="quit"):
         """
