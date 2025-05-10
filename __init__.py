@@ -16,7 +16,6 @@
 
 
 
-
 from os import path
 from tkinter import Tk, Canvas, Frame, Label, \
     ALL, Button, Entry, END, Scrollbar, N, S, E, W, LEFT, PhotoImage
